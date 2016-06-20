@@ -35,8 +35,10 @@ class Pymilio_db_connection:
 			
 		"""
 		
+		# should be improved when values are already defined in default_file
 		self.user = kwargs['user']
-		self.password = kwargs['password']
+		if 'password' in kwargs:
+			self.password = kwargs['password']
 		self.database = kwargs['database']
 		if 'host' in kwargs:
 			self.host = kwargs['host']
@@ -49,17 +51,17 @@ class Pymilio_db_connection:
 	def _connect(self):
 		"""Create MySQLdb connection to pumilio database."""
 		
-		'''
+		# is this the most elegant way?
 		if self.read_default_file:
 			db=MySQLdb.connect(host=self.host,
 						 user=self.user,
 						 db=self.database,
 						 read_default_file=self.read_default_file)
-		else: '''
-		db=MySQLdb.connect(host=self.host,
-					 user=self.user,
-					 passwd=self.password,
-					 db=self.database)
+		else:
+			db=MySQLdb.connect(host=self.host,
+			 user=self.user,
+			 passwd=self.password,
+			 db=self.database)
 		return db
 
 
