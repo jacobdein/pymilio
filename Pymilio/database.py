@@ -76,8 +76,10 @@ class Pymilio_db_connection:
 		db = self._connect()
 		c = db.cursor()
 		c.execute(statement)
+		result = c.fetchall()
 		c.close()
 		db.close()
+		return result
 
 
 	def fetch_as_pandas_df(self, table='Analyses', fields=['*'], where='', limit=1000):
