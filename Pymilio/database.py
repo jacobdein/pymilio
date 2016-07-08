@@ -63,6 +63,21 @@ class Pymilio_db_connection:
 			 passwd=self.password,
 			 db=self.database)
 		return db
+	
+	
+	def execute(statement):
+		"""Execute statement.
+			
+			statement
+				string, SQL statement
+
+		"""
+
+		db = self._connect()
+		c = db.cursor()
+		c.execute(statement)
+		c.close()
+		db.close()
 
 
 	def fetch_as_pandas_df(self, table='Analyses', fields=['*'], where='', limit=1000):
