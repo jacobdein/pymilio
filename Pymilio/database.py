@@ -65,7 +65,7 @@ class Pymilio_db_connection:
 		return db
 	
 	
-	def execute(statement):
+	def execute(self, statement):
 		"""Execute statement.
 			
 			statement
